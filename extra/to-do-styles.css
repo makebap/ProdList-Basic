@@ -1,0 +1,172 @@
+body {
+    font-size: 2rem;
+    font-weight: 400;
+    background-color: rgb(249, 234, 242);
+    margin-left: 15px;
+}
+
+button:focus {
+    outline: none;
+}
+
+.container-fluid > .row {
+    margin: 0;
+}
+
+h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 3rem;
+}
+
+.main-div {
+    margin-top: 5rem;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 15px;
+}
+
+input {
+    padding-left: 15px;
+}
+
+#hamburger {
+    height: 3rem;
+    width: auto;
+    margin-top: 0;
+}
+
+#search-bar {
+    margin-top: 30px;
+    display: flex;
+    margin-bottom: 50px;
+}
+
+#search-input {
+    width: 35rem;
+    border: 1px solid rgb(107, 77, 87);
+    border-radius: 10px;
+}
+
+#search-btn {
+    height: 3.5rem;
+    width: 3.5rem;
+    display: flex;
+    padding-top: 5px;
+    justify-content: flex-start;
+    margin-left: -50px;
+    border: none;
+    border-top: 1px solid rgb(107, 77, 87);
+    border-right: 1px solid rgb(107, 77, 87);
+    border-bottom: 1px solid rgb(107, 77, 87);
+    background-color: rgb(107, 77, 87);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#search-btn:active {
+    border: none;
+}
+
+#search-icon {
+    height: auto;
+    width: 40px;
+}
+
+#logo-img {
+    height: 50px;
+    width: auto;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.nav-item {
+    margin-bottom: 30px;
+}
+
+.nav-item a {
+    color: rgb(107, 77, 87);
+    padding-left: 5px;
+    text-decoration: none;
+}
+
+.hover-animation {
+    display: inline-block;
+    position: relative;
+    color: rgb(162, 117, 132);
+}
+
+.hover-animation:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(162, 117, 132);
+    transform-origin: bottom right;
+    transition: transform 0.15s ease-out;
+}
+
+.hover-animation:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.active-nav-link {
+    background-color: rgba(212, 212, 212, 0.34);
+    color: rgb(196, 174, 196);
+    border-left: 3px solid rgb(169, 150, 169);
+    font-weight: 500;
+}
+
+#profile-img {
+    height: 80px;
+    width: auto;
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 30px;
+}
+
+#date {
+    font-size: 1.5rem;
+    font-weight: 200;
+    color: rgb(186, 161, 167);
+    margin-bottom: 25px;
+}
+
+.today-breakdown {
+    border-radius: 25px;
+    box-shadow: 1.5px 1.5px 5px 5px #888888;
+    margin-bottom: 50px;
+}
+
+.tod-num {
+    font-size: 3rem;
+}
+
+#add-item {
+    display: flex;
+}
+
+#add-to-do {
+    width: 35rem;
+    border: 1px solid rgb(107, 77, 87);
+    border-radius: 10px;
+}
+
+#add-button {
+    height: 3.5rem;
+    width: 3.5rem;
+    color: rgb(186, 161, 167);
+    margin-left: -35px;
+    border: none;
+    border-top: 1px solid rgb(107, 77, 87);
+    border-right: 1px solid rgb(107, 77, 87);
+    border-bottom: 1px solid rgb(107, 77, 87);
+    background-color: rgb(107, 77, 87);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    justify-content: center;
+}
