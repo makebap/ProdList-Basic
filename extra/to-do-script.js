@@ -1,8 +1,9 @@
+//index
 //navbar toggle
 
 
 //navbar styles
-const navList = document.querySelector('.navbar-nav');
+
 const navItem = document.querySelectorAll('.nav-item');
 let focused = document.querySelector('.active-nav-link');
 
@@ -32,3 +33,8 @@ addNewForm.addEventListener('submit', function(e) {
     toDoSum += 1;
     toDoDisplay.innerText = toDoSum;
 })
+
+//editing and deleting item
+
+//delete
+const listItem = document.querySelector('.to-do-item');

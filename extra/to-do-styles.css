@@ -28,6 +28,13 @@ h1 {
     border-radius: 15px;
 }
 
+.log-main-div h1{
+    display: flex-box;
+    text-align: center;
+    justify-items: center;
+    margin-bottom: 40px;
+}
+
 input {
     padding-left: 15px;
 }
@@ -69,6 +76,20 @@ input {
     background-color: rgb(107, 77, 87);
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+}
+
+#show-password {
+    height: 3.3rem;
+    width: auto;
+    border: none;
+    border-top: 1px solid rgb(107, 77, 87);
+    border-right: 1px solid rgb(107, 77, 87);
+    border-bottom: 1px solid rgb(107, 77, 87);
+    background-color: rgb(107, 77, 87);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: rgb(249, 234, 242);
+    margin-left: -100px;
 }
 
 #search-btn:active {
@@ -177,11 +198,50 @@ input {
     margin-bottom: 10px;
 }
 
-#add-to-do {
+#add-to-do, .log-input {
     width: 35rem;
     border: 1px solid rgb(107, 77, 87);
     border-radius: 10px;
 }
+
+.log-input {
+    width: 25rem;
+    margin-bottom: 20px;
+}
+
+.log-btn {
+    height: 3.3rem;
+    width: auto;
+    border: none;
+    border-radius: 10px;
+    border-top: 1px solid rgb(249, 234, 242);
+    border-right: 1px solid rgb(249, 234, 242);
+    border-bottom: 1px solid rgb(249, 234, 242);
+    background-color: rgb(249, 234, 242);
+    color: rgb(107, 77, 87);
+    margin-bottom: 20px;
+}
+
+.log-btn:hover {
+    border-top: 1px solid rgb(107, 77, 87);
+    border-right: 1px solid rgb(107, 77, 87);
+    border-bottom: 1px solid rgb(107, 77, 87);
+    background-color: rgb(107, 77, 87);
+    color: rgb(249, 234, 242);
+}
+
+.log-link a {
+    font-size: 1.5rem;
+    color: rgb(162, 117, 132);
+    margin: auto;
+}
+
+.log-link a:hover {
+    font-size: 1.5rem;
+    color: rgb(169, 150, 169);
+    text-decoration: none;
+}
+
 
 #add-button {
     height: 3.5rem;
@@ -206,6 +266,10 @@ input {
     border-radius: 5px;
     border-top: 1px solid white;
     padding: 5px;
+}
+
+.log-label{
+    display: block;
 }
 
 @media (max-width: 1220px) {
