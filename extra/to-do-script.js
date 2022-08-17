@@ -1,8 +1,25 @@
-const addNewForm = document.querySelector('#add-item');
-const newTaskInput = document.querySelector('#add-to-do');
-const list = document.querySelector('#to-do-list');
+//navbar toggle
 
+
+//navbar styles
+const navList = document.querySelector('.navbar-nav');
+const navItem = document.querySelectorAll('.nav-item');
+let focused = document.querySelector('.active-nav-link');
+
+for (let link of navItem) {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        focused.classList.remove('active-nav-link');
+        link.classList.add('active-nav-link');
+        focused = link;
+    })
+}
+
+//add item
+const addNewForm = document.querySelector('#add-item');
 addNewForm.addEventListener('submit', function(e) {
+    const newTaskInput = document.querySelector('#add-to-do');
+    const list = document.querySelector('#to-do-list');
     e.preventDefault();
     const newTask = newTaskInput.value;
     const newTaskCard = document.createElement('div');

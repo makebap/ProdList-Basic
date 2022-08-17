@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+
 body {
     font-size: 2rem;
     font-weight: 400;
@@ -38,10 +40,11 @@ input {
     height: 3rem;
     width: auto;
     margin-top: 0;
+    justify-self: flex-end;
 }
 
 #search-bar {
-    margin-top: 30px;
+    margin-top: 50px;
     display: flex;
     margin-bottom: 50px;
 }
@@ -80,16 +83,21 @@ input {
 #logo-img {
     height: 45px;
     width: auto;
-    margin-top: 20px;
     margin-bottom: 50px;
 }
 
 .navbar {
-    align-items: flex-start;
+    align-content: flex-start;
+    padding-left: 0;
+}
+
+.navbar-brand {
+    margin-top: 0;
 }
 
 .nav-item {
     margin-bottom: 30px;
+    padding-left: 10px;
 }
 
 .nav-item a {
@@ -122,10 +130,8 @@ input {
     transform-origin: bottom left;
 }
 
-.navLinks {
-    max-height: 0px;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
+.nav-links {
+    position: relative;
 }
 
 .active-nav-link {
@@ -138,9 +144,6 @@ input {
 #profile-img {
     height: 80px;
     width: auto;
-    /* position: fixed;
-    bottom: 0;
-    margin-bottom: 30px; */
 }
 
 #date {
@@ -210,8 +213,8 @@ input {
     }
 }
 
-@media (min-width: 1220px) {
+/* @media (min-width: 1220px) {
     #hamburger {
         display: none;
     }
-}
+} */
