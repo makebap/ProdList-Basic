@@ -1,4 +1,4 @@
-//login/sign up
+//login
 
 //show password
 const showBtn = document.querySelector('#show-password');
