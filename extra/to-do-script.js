@@ -27,4 +27,8 @@ addNewForm.addEventListener('submit', function(e) {
     newTaskCard.innerText = newTask;
     list.append(newTaskCard);
     newTaskInput.value = '';
+    const toDoDisplay = document.querySelector('#unfin-num');
+    let toDoSum = parseInt(toDoDisplay.innerText);
+    toDoSum += 1;
+    toDoDisplay.innerText = toDoSum;
 })
