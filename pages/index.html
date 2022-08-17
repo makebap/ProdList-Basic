@@ -13,8 +13,12 @@
     <main>
         <div class="main-div container container-fluid px-0">
             <div class="row">
-                <nav class="col col-lg-3 navbar">
-                    <a href="#" class="navbar-brand"><img id="logo-img" src="../images/logo.png" alt="ProdList Logo"></a>
+                <nav class="container col col-lg-3 navbar">
+                    <div class="row">
+                        <a href="#" class="col navbar-brand"><img id="logo-img" src="../images/logo.png" alt="ProdList Logo"></a>
+                        <button class="navbar-toggler collapsible" data-toggle="collapse" data-target="#navLinks" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"><img id="hamburger" src="../images/menu.png"></span>
+                        </button>
                     <div class="" id="navLinks">
                         <ul class="navbar-nav">
                             <li class="nav-item hover-animation">
@@ -37,9 +41,9 @@
                             </li>
                         </ul>
                     </div>
-                    
+                    </div>
                 </nav>
-                <div class="col col-lg-9 main-view">
+                <div class="col col-lg-7 main-view">
                     <form id="search-bar" action="">
                         <input id="search-input" type="text" placeholder="Search To-Do List">
                         <button id="search-btn" type="button"><img id="search-icon" src="../images/search-icon.png"></button>
@@ -53,24 +57,24 @@
                             <div class="col tod-num"><span id="tod-prodpoint-num">0</span></div>
                         </div>
                         <div class="row">
-                            <div class="col">Finished Tasks</div>
-                            <div class="col">Unfinished Tasks</div>
-                            <div class="col">ProdPoints Today</div>
+                            <div class="col tod-label">Finished Tasks</div>
+                            <div class="col tod-label">Unfinished Tasks</div>
+                            <div class="col tod-label">ProdPoints Today</div>
                         </div>
                     </div>
-                    <div class="to-do-list">
+                    <div id="to-do-list">
                         <form id="add-item" action="">
                             <input type="text" id="add-to-do" placeholder="Add a new to-do">
-                            <button id="add-button" type="button">+</button>
+                            <button id="add-button">+</button>
                         </form>
                         <!-- new to do items will go here -->
                     </div>
                 </div>
-                <div class="col"></div>
+                <div class="col col-2"></div>
             </div>
         </div>
     </main>    
-    <script src="to-do-script.js"></script>
+    <script src="../extra/to-do-script.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
