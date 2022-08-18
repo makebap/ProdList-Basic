@@ -36,7 +36,7 @@ const validInp = (str) => {
 const addNewForm = document.querySelector('#add-item');
 const toDoDisplay = document.querySelector('#unfin-num');
 let toDoSum = parseInt(toDoDisplay.innerText);
-const list = document.querySelector('#to-do-list');
+const list = document.querySelector('#list-items');
 addNewForm.addEventListener('submit', function(e) {
     const newTaskInput = document.querySelector('#add-to-do');
     e.preventDefault();
@@ -63,7 +63,7 @@ addNewForm.addEventListener('submit', function(e) {
         newTaskForm.classList.add('container');
         newTaskForm.action = '';
         newTaskCard.append(newTaskForm);
-        list.append(newTaskCard);
+        list.prepend(newTaskCard);
         newTaskInput.value = '';
         toDoSum += 1;
         toDoDisplay.innerText = toDoSum;
@@ -72,17 +72,59 @@ addNewForm.addEventListener('submit', function(e) {
 
 //editing and deleting item
 //edit
-
+list.addEventListener('submit', function(e) {
+    console.dir(e.target);
+    if (e.target.className.includes('taskCardForm')) {
+        document.querySelector('#add-to-do').focus();
+    }
+})
 
 //delete
 list.addEventListener('click', function(e) {
-    if (e.target.id === 'add-to-do' && e.target.id === 'add-button'){
-        e.preventDefault();
-    } else {
-        if (e.target.className.includes('task-delete')) {
-            e.target.parentNode.parentNode.remove();
-            toDoSum -= 1;
-            toDoDisplay.innerText = toDoSum;
+    if (e.target.className.includes('task-delete')) {
+        e.target.parentNode.parentNode.remove();
+        toDoSum -= 1;
+        toDoDisplay.innerText = toDoSum;
+    }
+})
+
+//search
+const search = document.querySelector('#search-input');
+const welcome = document.querySelector('.welcome');
+const today = document.querySelector('.today-breakdown');
+const addInp = document.querySelector('#add-item');
+const results = document.querySelector('.results-view');
+const page = document.querySelector('.page-view');
+const items = list.childNodes;
+
+search.addEventListener('input', function() {
+    let found = 0;
+    if (search.value !== '') {
+        let searchInp = search.value;
+        welcome.hidden = true;
+        today.hidden = true;
+        addInp.hidden = true;
+        for  (let item = 0; item < items.length; item++) {
+            let temp = items[item];
+            if (!temp.children[0].children[0].value.includes(searchInp)){
+                temp.hidden = true;
+            } else {
+                results.innerHTML = '';
+                temp.hidden = false;
+                found++;
+            }
+            if (found === 0) {
+                results.innerHTML = '<p>No results found</p>';
+            }
         }
+    } else {
+        for  (let item = 0; item < items.length; item++) {
+            let temp = items[item];
+            temp.hidden = false;
+        }
+        results.innerHTML = '';
+        welcome.hidden = false;
+        today.hidden = false;
+        addInp.hidden = false;
     }
 })

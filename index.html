@@ -14,7 +14,7 @@
         <div class="main-div container container-fluid px-0">
             <div class="row">
                 <div class="col col-1"></div>
-                <div class="col  col-lg-3">
+                <div class="col col-lg-3">
                     <div class="l-navbar nav-bar">
                         <nav class="container col nav">
                             <div class="row">
@@ -47,10 +47,14 @@
                     </div>
                 </div>
                 <div class="col col-lg-7 main-view">
+                    <div class="search">
                     <form id="search-bar" action="">
                         <input id="search-input" type="search" placeholder="Search To-Do List" autocomplete="off">
                         <button id="search-btn" type="button"><img id="search-icon" src="./images/search-icon.png"></button>
                     </form>
+                    </div>
+                    <div class="results-view"></div>
+                    <div class="page-view">
                     <div class="welcome container">
                         <div class="row">
                             <div class="col-7">
@@ -86,7 +90,8 @@
                             <input type="text" id="add-to-do" placeholder="Add a new to-do" autocomplete="off">
                             <button id="add-button">+</button>
                         </form>
-                        <!-- new to do items will go here -->
+                        <div id="list-items"></div>
+                    </div>
                     </div>
                 </div>
                 <div class="col col-1"></div>
