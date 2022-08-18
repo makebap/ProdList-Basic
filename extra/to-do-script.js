@@ -6,12 +6,18 @@ body.addEventListener('submit', function(e) {
     }
 })
 
+const params = new URLSearchParams(window.location.search);
+const userName = params.get('name');
+const nameField = document.querySelector('#welcome-name');
+
+nameField.innerText = `, ${userName}`;
+
+
 //navbar
 //navbar toggle
 
 
 //navbar styles
-
 const navItem = document.querySelectorAll('.nav-item');
 let focused = document.querySelector('.active-nav-link');
 
