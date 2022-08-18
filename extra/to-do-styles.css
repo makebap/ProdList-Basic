@@ -39,10 +39,6 @@ input {
     padding-left: 15px;
 }
 
-.collapsible {
-    cursor: pointer;
-}
-
 #hamburger {
     height: 3rem;
     width: auto;
@@ -204,6 +200,22 @@ input {
     border-radius: 10px;
 }
 
+.task-input, .task-delete{
+    background-color: rgb(186, 161, 167);
+    color: white;
+    border: none;
+}
+
+.task-input:focus {
+    outline: none;
+}
+
+.task-delete {
+    font-size: 1.5rem;
+    height: 3.5rem;
+    border-left: 1px solid white;
+}
+
 .log-input {
     width: 25rem;
     margin-bottom: 20px;
@@ -277,10 +289,13 @@ input {
         height: 35px;
         width: auto;
     }
+    #nav-links {
+        display: none;
+    }
 }
 
-/* @media (min-width: 1220px) {
+@media (min-width: 1220px) {
     #hamburger {
         display: none;
     }
-} */
+}
