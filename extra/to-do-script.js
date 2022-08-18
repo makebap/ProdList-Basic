@@ -64,21 +64,24 @@ addNewForm.addEventListener('submit', function(e) {
 
 //editing and deleting item
 //edit
+
+const blurAll = () => {
+    let tmp = document.createElement('input');
+    document.body.appendChild(tmp);
+    tmp.focus();
+    document.body.removeChild(tmp);
+}
+
 const taskForms = document.querySelectorAll('.taskCardForm');
 
 for (let task of taskForms){
     task.addEventListener('submit', function(e) {
         e.preventDefault();
-        console.log('submitted');
+        document.querySelectorAll('.task-input').blur();
     })
 }
 
-
-
-
 //delete
-const list = document.querySelector('#to-do-list');
-
-list.addEventListener('click', function(e) {
-    
-})
+for (let task of taskForms) {
+    task
+}

@@ -172,6 +172,15 @@ input {
     margin-bottom: 25px;
 }
 
+#filter {
+    background-color: rgb(162, 117, 132);
+    border-radius: 15px;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+}
+
 .today-breakdown {
     border-radius: 25px;
     box-shadow: 1.5px 1.5px 5px 5px #888888;
@@ -258,13 +267,13 @@ input {
 #add-button {
     height: 3.5rem;
     width: 3.5rem;
-    color: rgb(186, 161, 167);
+    color: white;
     margin-left: -35px;
     border: none;
     border-top: 1px solid rgb(107, 77, 87);
     border-right: 1px solid rgb(107, 77, 87);
     border-bottom: 1px solid rgb(107, 77, 87);
-    background-color: rgb(107, 77, 87);
+    background-color: rgb(162, 117, 132);
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     display: flex;
