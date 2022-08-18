@@ -1,4 +1,12 @@
 //index
+const body = document.querySelector('body');
+body.addEventListener('submit', function(e) {
+    if (e.target.nodeName === 'FORM') {
+        e.preventDefault();
+    }
+})
+
+//navbar
 //navbar toggle
 
 
@@ -16,6 +24,7 @@ for (let link of navItem) {
     })
 }
 
+//add item
 const validInp = (str) => {
     if (str.startsWith(' ')){
         return false;
@@ -24,11 +33,12 @@ const validInp = (str) => {
     }
 }
 
-//add item
 const addNewForm = document.querySelector('#add-item');
+const toDoDisplay = document.querySelector('#unfin-num');
+let toDoSum = parseInt(toDoDisplay.innerText);
+const list = document.querySelector('#to-do-list');
 addNewForm.addEventListener('submit', function(e) {
     const newTaskInput = document.querySelector('#add-to-do');
-    const list = document.querySelector('#to-do-list');
     e.preventDefault();
     if (newTaskInput.value.length != 0 && validInp(newTaskInput.value)){
         const newTask = newTaskInput.value;
@@ -55,8 +65,6 @@ addNewForm.addEventListener('submit', function(e) {
         newTaskCard.append(newTaskForm);
         list.append(newTaskCard);
         newTaskInput.value = '';
-        const toDoDisplay = document.querySelector('#unfin-num');
-        let toDoSum = parseInt(toDoDisplay.innerText);
         toDoSum += 1;
         toDoDisplay.innerText = toDoSum;
     }
@@ -65,23 +73,16 @@ addNewForm.addEventListener('submit', function(e) {
 //editing and deleting item
 //edit
 
-const blurAll = () => {
-    let tmp = document.createElement('input');
-    document.body.appendChild(tmp);
-    tmp.focus();
-    document.body.removeChild(tmp);
-}
-
-const taskForms = document.querySelectorAll('.taskCardForm');
-
-for (let task of taskForms){
-    task.addEventListener('submit', function(e) {
-        e.preventDefault();
-        document.querySelectorAll('.task-input').blur();
-    })
-}
 
 //delete
-for (let task of taskForms) {
-    task
-}
+list.addEventListener('click', function(e) {
+    if (e.target.id === 'add-to-do' && e.target.id === 'add-button'){
+        e.preventDefault();
+    } else {
+        if (e.target.className.includes('task-delete')) {
+            e.target.parentNode.parentNode.remove();
+            toDoSum -= 1;
+            toDoDisplay.innerText = toDoSum;
+        }
+    }
+})
