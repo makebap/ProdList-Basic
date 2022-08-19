@@ -27,12 +27,18 @@ displayDate.innerText = date;
 
 
 //navbar
-//navbar toggle
-
-
-//navbar styles
+//nav change
+const search = document.querySelector('#search-input');
+const searchBar = document.querySelector('#search-bar');
 const navItem = document.querySelectorAll('.nav-item');
 let focused = document.querySelector('.active-nav-link');
+
+const homePage = document.querySelector('.home-page-view');
+const home = document.querySelector('.home-link');
+const projects = document.querySelector('.projects-link');
+const grocery = document.querySelector('.grocery-link');
+const collection = document.querySelector('.collection-link');
+const settings = document.querySelector('.settings-link');
 
 for (let link of navItem) {
     link.addEventListener('click', function(e) {
@@ -42,6 +48,40 @@ for (let link of navItem) {
         focused = link;
     })
 }
+
+home.addEventListener('click', function(e){
+    e.preventDefault();
+    searchBar.hidden = false;
+    search.placeholder = 'Search To-Do List';
+    homePage.hidden = false;
+})
+projects.addEventListener('click', function(e){
+    e.preventDefault();
+        searchBar.hidden = false;
+    search.placeholder = 'Search Projects';
+    homePage.hidden = true;
+})
+grocery.addEventListener('click', function(e){
+    e.preventDefault();
+        searchBar.hidden = false;
+    search.placeholder = 'Search Grocery List';
+    homePage.hidden = true;
+})
+collection.addEventListener('click', function(e){
+    e.preventDefault();
+    searchBar.hidden = true;
+    homePage.hidden = true;
+})
+settings.addEventListener('click', function(e){
+    e.preventDefault();
+    searchBar.hidden = false;
+    search.placeholder = 'Search Settings';
+    homePage.hidden = true;
+})
+
+
+//navbar toggle
+
 
 //add item
 const validInp = (str) => {
@@ -56,6 +96,7 @@ const addNewForm = document.querySelector('#add-item');
 const toDoDisplay = document.querySelector('#unfin-num');
 let toDoSum = parseInt(toDoDisplay.innerText);
 const list = document.querySelector('#list-items');
+
 addNewForm.addEventListener('submit', function(e) {
     const newTaskInput = document.querySelector('#add-to-do');
     e.preventDefault();
@@ -64,13 +105,22 @@ addNewForm.addEventListener('submit', function(e) {
         const newTaskCard = document.createElement('div');
         newTaskCard.classList.add('to-do-item');
         const newTaskForm = document.createElement('form');
+
+        const newTaskComplete = document.createElement('input');
+        newTaskComplete.type = 'checkbox';
+        newTaskComplete.classList.add('complete-check');
+        newTaskComplete.classList.add('col');
+        newTaskComplete.classList.add('col-1');
+        newTaskForm.append(newTaskComplete);
+        
         const newTaskText = document.createElement('input');
         newTaskText.type = 'text';
         newTaskText.classList.add('task-input');
         newTaskText.classList.add('col');
-        newTaskText.classList.add('col-10');
+        newTaskText.classList.add('col-9');
         newTaskText.value = newTask;
         newTaskForm.append(newTaskText);
+        
         const deleteBtn = document.createElement('button');
         deleteBtn.innerText = 'Delete';
         deleteBtn.type = 'button';
@@ -78,21 +128,32 @@ addNewForm.addEventListener('submit', function(e) {
         deleteBtn.classList.add('col');
         deleteBtn.classList.add('col-2');
         newTaskForm.append(deleteBtn);
+        
         newTaskForm.classList.add('taskCardForm');
         newTaskForm.classList.add('container');
         newTaskForm.action = '';
         newTaskCard.append(newTaskForm);
         list.prepend(newTaskCard);
         newTaskInput.value = '';
-        toDoSum += 1;
+        toDoSum++;
         toDoDisplay.innerText = toDoSum;
     }
 })
 
 //editing and deleting item
 //edit
+const completedList = document.querySelector('#completed-items');
+const compBtn = document.querySelector('#show-completed');
+const finDisplay = document.querySelector('#fin-num');
+let finSum = parseInt(finDisplay.innerText);
+
 list.addEventListener('submit', function(e) {
-    console.dir(e.target);
+    if (e.target.className.includes('taskCardForm')) {
+        document.querySelector('#add-to-do').focus();
+    }
+})
+
+completedList.addEventListener('submit', function(e) {
     if (e.target.className.includes('taskCardForm')) {
         document.querySelector('#add-to-do').focus();
     }
@@ -102,18 +163,53 @@ list.addEventListener('submit', function(e) {
 list.addEventListener('click', function(e) {
     if (e.target.className.includes('task-delete')) {
         e.target.parentNode.parentNode.remove();
-        toDoSum -= 1;
+        toDoSum--;
         toDoDisplay.innerText = toDoSum;
     }
 })
 
+completedList.addEventListener('click', function(e) {
+    if (e.target.className.includes('task-delete')) {
+        e.target.parentNode.parentNode.remove();
+        finSum--;
+        finDisplay.innerText = finSum;
+    }
+})
+
+//complete
+compBtn.addEventListener('click', function() {
+    completedList.toggleAttribute('hidden');
+})
+
+list.addEventListener('click', function(e) {
+    if (e.target.className.includes('complete-check')) {
+        if (e.target.checked === true) {
+            completedList.prepend(e.target.parentNode.parentNode);
+            toDoSum--;
+            finSum++;
+            toDoDisplay.innerText = toDoSum;
+            finDisplay.innerText = finSum;
+        }
+    }
+})
+
+completedList.addEventListener('click', function(e) {
+    if (e.target.className.includes('complete-check')) {
+        if (e.target.checked === false) {
+            list.prepend(e.target.parentNode.parentNode);
+            toDoSum++;
+            finSum--;
+            toDoDisplay.innerText = toDoSum;
+            finDisplay.innerText = finSum;
+        }
+    }
+})
+
 //search
-const search = document.querySelector('#search-input');
 const welcome = document.querySelector('.welcome');
 const todayBD = document.querySelector('.today-breakdown');
 const addInp = document.querySelector('#add-item');
 const results = document.querySelector('.results-view');
-const page = document.querySelector('.page-view');
 const items = list.childNodes;
 
 search.addEventListener('input', function() {
@@ -173,3 +269,5 @@ filterSelect.addEventListener('change', function() {
         console.log('oldest.');
     }
 })
+
+//sort

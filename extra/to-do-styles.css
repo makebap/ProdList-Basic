@@ -155,6 +155,7 @@ input {
     color: rgb(196, 174, 196);
     border-left: 3px solid rgb(169, 150, 169);
     font-weight: 500;
+    padding-right: 10px;
     transition: font-weight 0.15s;
     transition: background-color 0.25s;
 }
@@ -172,7 +173,7 @@ input {
 }
 
 #filter {
-    background-color: rgb(162, 117, 132);
+    background-color: rgb(107, 77, 87);
     border-radius: 15px;
     color: white;
     padding: 5px 10px;
@@ -185,6 +186,7 @@ input {
     box-shadow: 1.5px 1.5px 5px 5px #888888;
     margin-bottom: 50px;
     padding-bottom: 10px;
+    padding-left: 40px;
     background-color: rgb(107, 77, 87);
 }
 
@@ -208,20 +210,29 @@ input {
     border-radius: 10px;
 }
 
-.task-input, .task-delete{
+#list-items input {
     background-color: rgb(186, 161, 167);
     color: white;
     border: none;
+}
+
+#list-items button{
+    background-color: rgb(186, 161, 167);
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    height: 3.5rem;
+    border-left: 1px solid white;
 }
 
 .task-input:focus {
     outline: none;
 }
 
-.task-delete {
-    font-size: 1.5rem;
-    height: 3.5rem;
-    border-left: 1px solid white;
+.complete-check {
+    transform: scale(2);
+    outline: none;
+    accent-color: rgb(107, 77, 87);
 }
 
 .log-input {
@@ -289,6 +300,34 @@ input {
 
 .log-label{
     display: block;
+}
+
+#show-completed {
+    background-color: white;
+    color: rgb(186, 161, 167);
+    border: none;
+    font-size: 1.5rem;
+}
+
+#completed-items div {
+    background-color: rgba(190, 172, 176, 0.774);
+    color: white;
+    border: none;
+}
+
+#completed-items input {
+    background-color: rgba(186, 161, 167, 0);
+    color: white;
+    border: none;
+}
+
+#completed-items button {
+    background-color: rgba(186, 161, 167, 0);
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    height: 3.5rem;
+    border-left: 1px solid white;
 }
 
 @media (max-width: 1220px) {
