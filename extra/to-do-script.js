@@ -1,4 +1,5 @@
 //index
+//handling forms
 const body = document.querySelector('body');
 body.addEventListener('submit', function(e) {
     if (e.target.nodeName === 'FORM') {
@@ -6,11 +7,23 @@ body.addEventListener('submit', function(e) {
     }
 })
 
+//name
 const params = new URLSearchParams(window.location.search);
 const userName = params.get('name');
 const nameField = document.querySelector('#welcome-name');
 
-nameField.innerText = `, ${userName}`;
+if (userName != null) {
+    nameField.innerText = `, ${userName}`;
+}
+
+//date
+let today = new Date();
+const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+let date = `${days[today.getDay()-1]}, ${today.getDate()} ${months[today.getMonth()-1]}, ${today.getFullYear()}`;
+const displayDate = document.querySelector('#date');
+displayDate.innerText = date;
 
 
 //navbar
@@ -97,7 +110,7 @@ list.addEventListener('click', function(e) {
 //search
 const search = document.querySelector('#search-input');
 const welcome = document.querySelector('.welcome');
-const today = document.querySelector('.today-breakdown');
+const todayBD = document.querySelector('.today-breakdown');
 const addInp = document.querySelector('#add-item');
 const results = document.querySelector('.results-view');
 const page = document.querySelector('.page-view');
@@ -106,21 +119,28 @@ const items = list.childNodes;
 search.addEventListener('input', function() {
     let found = 0;
     if (search.value !== '') {
-        let searchInp = search.value;
-        welcome.hidden = true;
-        today.hidden = true;
-        addInp.hidden = true;
-        for  (let item = 0; item < items.length; item++) {
-            let temp = items[item];
-            if (!temp.children[0].children[0].value.includes(searchInp)){
-                temp.hidden = true;
-            } else {
-                results.innerHTML = '';
-                temp.hidden = false;
-                found++;
-            }
-            if (found === 0) {
-                results.innerHTML = '<p>No results found</p>';
+        if (list.childNodes.length === 0){
+            results.innerHTML = "There's nothing on your list!";
+            welcome.hidden = true;
+            todayBD.hidden = true;
+            addInp.hidden = false;
+        } else {
+            let searchInp = search.value;
+            welcome.hidden = true;
+            todayBD.hidden = true;
+            addInp.hidden = true;
+            for  (let item = 0; item < items.length; item++) {
+                let temp = items[item];
+                if (!temp.children[0].children[0].value.includes(searchInp)){
+                    temp.hidden = true;
+                } else {
+                    results.innerHTML = '';
+                    temp.hidden = false;
+                    found++;
+                }
+                if (found === 0) {
+                    results.innerHTML = '<p>No results found</p>';
+                }
             }
         }
     } else {
@@ -130,7 +150,26 @@ search.addEventListener('input', function() {
         }
         results.innerHTML = '';
         welcome.hidden = false;
-        today.hidden = false;
+        todayBD.hidden = false;
         addInp.hidden = false;
+    }
+})
+
+//filtering
+const filterSelect = document.querySelector('#filter');
+
+filterSelect.addEventListener('change', function() {
+    if (filterSelect.value === 'filter') {
+        console.log('filter.');
+    } else if (filterSelect.value === 'unfinished') {
+        console.log('unfinished.');
+    } else if (filterSelect.value === 'a-z') {
+        console.log('a-z.');
+    } else if (filterSelect.value === 'z-a') {
+        console.log('z-a.');
+    } else if (filterSelect.value === 'recent') {
+        console.log('recent.');
+    } else if (filterSelect.value === 'oldest') {
+        console.log('oldest.');
     }
 })
