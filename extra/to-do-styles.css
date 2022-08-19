@@ -179,6 +179,7 @@ input {
     padding: 5px 10px;
     border: none;
     outline: none;
+    width: 200px;
 }
 
 .today-breakdown {
@@ -328,6 +329,12 @@ input {
     font-size: 1.5rem;
     height: 3.5rem;
     border-left: 1px solid white;
+}
+
+.priority-label {
+    margin-left: 10px;
+    margin-right: 10px;
+    border-left: 1px slid white;
 }
 
 @media (max-width: 1220px) {

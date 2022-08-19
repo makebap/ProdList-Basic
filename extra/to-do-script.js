@@ -117,9 +117,54 @@ addNewForm.addEventListener('submit', function(e) {
         newTaskText.type = 'text';
         newTaskText.classList.add('task-input');
         newTaskText.classList.add('col');
-        newTaskText.classList.add('col-9');
+        newTaskText.classList.add('col-6');
         newTaskText.value = newTask;
         newTaskForm.append(newTaskText);
+
+        const priorityContainer = document.createElement('span');
+        priorityContainer.classList.add('col');
+        priorityContainer.classList.add('col-3');
+
+        const priorityOneLabel = document.createElement('label');
+        priorityOneLabel.innerText = '!';
+        priorityOneLabel.classList.add('priority-label');
+        priorityOneLabel.for = 'p1';
+        priorityOneLabel.setAttribute('for', 'p1');
+        const priorityOne = document.createElement('input');
+        priorityOne.id = 'p1';
+        priorityOne.type = 'radio';
+        priorityOne.name = 'priority';
+        priorityOne.value = 'low';
+        // priorityOne.hidden = true;
+        priorityContainer.append(priorityOneLabel);
+        priorityContainer.append(priorityOne);
+
+        const priorityTwoLabel = document.createElement('label');
+        priorityTwoLabel.innerText = '!!';
+        priorityTwoLabel.classList.add('priority-label');
+        priorityTwoLabel.setAttribute('for', 'p2');
+        const priorityTwo = document.createElement('input');
+        priorityTwo.id = 'p2';
+        priorityTwo.type = 'radio';
+        priorityTwo.name = 'priority';
+        priorityTwo.value = 'medium';
+        // priorityTwo.hidden = true;
+        priorityContainer.append(priorityTwoLabel);
+        priorityContainer.append(priorityTwo);
+        
+        const priorityThreeLabel = document.createElement('label');
+        priorityThreeLabel.innerText = '!!!';
+        priorityThreeLabel.classList.add('priority-label');
+        priorityThreeLabel.setAttribute('for', 'p3');
+        const priorityThree = document.createElement('input');
+        priorityThree.id = 'p3';
+        priorityThree.type = 'radio';
+        priorityThree.name = 'priority';
+        priorityThree.value = 'high';
+        // priorityThree.hidden = true;
+        priorityContainer.append(priorityThreeLabel);
+        priorityContainer.append(priorityThree);
+        newTaskForm.append(priorityContainer);
         
         const deleteBtn = document.createElement('button');
         deleteBtn.innerText = 'Delete';
@@ -205,6 +250,13 @@ completedList.addEventListener('click', function(e) {
     }
 })
 
+//priority
+list.addEventListener('click', function(e) {
+    if (e.target.className.includes('priority-label')) {
+        
+    }
+})
+
 //search
 const welcome = document.querySelector('.welcome');
 const todayBD = document.querySelector('.today-breakdown');
@@ -227,7 +279,7 @@ search.addEventListener('input', function() {
             addInp.hidden = true;
             for  (let item = 0; item < items.length; item++) {
                 let temp = items[item];
-                if (!temp.children[0].children[0].value.includes(searchInp)){
+                if (!temp.children[0].children[1].value.includes(searchInp)){
                     temp.hidden = true;
                 } else {
                     results.innerHTML = '';
