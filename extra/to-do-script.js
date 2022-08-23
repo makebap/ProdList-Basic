@@ -16,12 +16,13 @@ if (userName != null) {
     nameField.innerText = `, ${userName}`;
 }
 
+//${months[today.getMonth()-1]}
 //date
 let today = new Date();
 const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-let date = `${days[today.getDay()-1]}, ${today.getDate()} ${months[today.getMonth()-1]}, ${today.getFullYear()}`;
+let date = `${days[today.getDay()-1]}, ${today.getDate()} ${months[today.getMonth()]}, ${today.getFullYear()}`;
 const displayDate = document.querySelector('#date');
 displayDate.innerText = date;
 
