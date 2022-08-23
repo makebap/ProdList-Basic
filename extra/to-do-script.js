@@ -16,7 +16,6 @@ if (userName != null) {
     nameField.innerText = `, ${userName}`;
 }
 
-//${months[today.getMonth()-1]}
 //date
 let today = new Date();
 const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
