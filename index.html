@@ -37,7 +37,7 @@
                                             <a class="nav-link" href="">Settings</a>
                                         </li>
                                         <li class="container">
-                                            <a href=""><img id="profile-img" src="./images/profile-icon.jpg" alt=""></a>
+                                            <a href="" title="Account"><img id="profile-img" src="./images/profile-icon.jpg" alt=""></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -64,7 +64,7 @@
                             <div class="col-5">
                                 <select name="filter" id="filter">
                                     <option value="filter">Filter</option>
-                                    <option value="unfinished">Unfinished</option>
+                                    <option value="unfinished">Completed</option>
                                     <option value="a-z">A-Z</option>
                                     <option value="z-a">Z-A</option>
                                     <option value="recent">Most Recent</option>
@@ -82,8 +82,39 @@
                         <div class="row">
                             <div class="col tod-label">Finished Tasks</div>
                             <div class="col tod-label">Unfinished Tasks</div>
-                            <div class="col tod-label">ProdPoints Today</div>
+                            <div class="col tod-label">ProdPoints Today <sup><img class="info-icon" src="/images/info.png" alt=""></sup></div>
                         </div>
+                    </div>
+                    <div class="prodPoints-desc">
+                        <h2>ProdPoints</h2>
+                        <p>Earn ProdPoints by completing tasks:
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-6">Default priority</div>
+                                    <div class="col-1">-</div>
+                                    <div class="col-5">1 ProdPoint</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">Low priority</div>
+                                    <div class="col-1">-</div>
+                                    <div class="col-5">2 ProdPoints</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">Medium priority</div>
+                                    <div class="col-1">-</div>
+                                    <div class="col-5">3 ProdPoints</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">High priority</div>
+                                    <div class="col-1">-</div>
+                                    <div class="col-5">4 ProdPoints</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-9"></div>
+                                    <div class="col-3"><button class="close-desc">Got it!</button></div>
+                                </div>
+                            </div>
+                        </p>
                     </div>
                     <div id="to-do-list">
                         <form id="add-item" action="">

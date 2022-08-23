@@ -19,6 +19,10 @@ h1 {
     font-size: 3rem;
 }
 
+h2 {
+    margin-bottom: 20px;
+}
+
 .main-div {
     margin-top: 5rem;
     padding: 2rem;
@@ -160,6 +164,34 @@ input {
     transition: background-color 0.25s;
 }
 
+.info-icon {
+    width: 20px;
+    height: auto;
+}
+
+.prodPoints-desc {
+    display: none;
+    background-color: white;
+    border: 1px solid rgb(107, 77, 87);
+    color: rgb(107, 77, 87);
+    position: absolute;
+    padding: 15px 15px;
+    margin-left: -60px;
+    margin-top: -90px;
+    width: 600px;
+    overflow: hidden;
+    transition: height 200ms;
+    z-index: 1;
+}
+
+.close-desc {
+    background-color: rgb(107, 77, 87);
+    color: white;
+    border-color: rgb(107, 77, 87);
+    border-radius: 15px;
+    margin-top: 15px;
+}
+
 #profile-img {
     height: 80px;
     width: auto;
@@ -179,7 +211,7 @@ input {
     padding: 5px 10px;
     border: none;
     outline: none;
-    width: 200px;
+    width: fit-content;
 }
 
 .today-breakdown {

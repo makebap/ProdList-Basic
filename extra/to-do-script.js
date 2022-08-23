@@ -241,9 +241,8 @@ list.addEventListener('click', function(e) {
             for (let i = 0; i < prioCheck.length; i++){
                 isChecked = prioCheck[i].checked;
                 if (isChecked === true){
-                    console.dir(isChecked);
                     if (prioCheck[i].getAttribute('value') === 'high'){
-                        prodPoints = 5;
+                        prodPoints = 4;
                     } else if (prioCheck[i].getAttribute('value') === 'medium') {
                         prodPoints = 3;
                     } else if (prioCheck[i].getAttribute('value') === 'low') {
@@ -276,7 +275,6 @@ completedList.addEventListener('click', function(e) {
             for (let i = 0; i < prioCheck.length; i++){
                 isChecked = prioCheck[i].checked;
                 if (isChecked === true){
-                    console.dir(isChecked);
                     if (prioCheck[i].getAttribute('value') === 'high'){
                         prodPoints = 5;
                     } else if (prioCheck[i].getAttribute('value') === 'medium') {
@@ -304,9 +302,7 @@ completedList.addEventListener('click', function(e) {
 //priority
 list.addEventListener('click', function(e) {
     if (e.target.className.includes('priority-label')) {
-        console.dir(e.target.parentNode);
         checkedLabelCheck = e.target.parentNode.childNodes;
-        console.dir(checkedLabelCheck);
         for (let node of checkedLabelCheck) {
             node.classList.remove('checked-priority');
         }
@@ -383,3 +379,22 @@ filterSelect.addEventListener('change', function() {
 })
 
 //sort
+
+//desc
+//ProdPoints desc expand
+const iCard = document.querySelector('.info-icon');
+const descCloseBtn = document.querySelector('.close-desc');
+const desc = document.querySelector('.prodPoints-desc');
+desc.style.display = 'none'
+iCard.addEventListener('click', function() {
+    console.dir(desc.style.display);
+    if (desc.style.display === 'none'){
+        desc.style.display = 'block';
+    } else {
+        desc.style.display = 'none';
+    }
+})
+
+descCloseBtn.addEventListener('click', function() {
+    desc.style.display = 'none';
+})
