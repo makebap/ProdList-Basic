@@ -334,7 +334,10 @@ input {
 .priority-label {
     margin-left: 10px;
     margin-right: 10px;
-    border-left: 1px slid white;
+}
+
+.checked-priority {
+    color: red;
 }
 
 @media (max-width: 1220px) {

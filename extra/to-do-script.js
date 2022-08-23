@@ -96,6 +96,7 @@ const addNewForm = document.querySelector('#add-item');
 const toDoDisplay = document.querySelector('#unfin-num');
 let toDoSum = parseInt(toDoDisplay.innerText);
 const list = document.querySelector('#list-items');
+let listCount = 0;
 
 addNewForm.addEventListener('submit', function(e) {
     const newTaskInput = document.querySelector('#add-to-do');
@@ -129,43 +130,45 @@ addNewForm.addEventListener('submit', function(e) {
         priorityOneLabel.innerText = '!';
         priorityOneLabel.classList.add('priority-label');
         priorityOneLabel.for = 'p1';
-        priorityOneLabel.setAttribute('for', 'p1');
+        priorityOneLabel.setAttribute('for', `p${listCount}1`);
         const priorityOne = document.createElement('input');
-        priorityOne.id = 'p1';
+        priorityOne.id = `p${listCount}1`;
         priorityOne.type = 'radio';
-        priorityOne.name = 'priority';
+        priorityOne.name = `priority${listCount}`;
         priorityOne.value = 'low';
-        // priorityOne.hidden = true;
+        priorityOne.hidden = true;
         priorityContainer.append(priorityOneLabel);
         priorityContainer.append(priorityOne);
 
         const priorityTwoLabel = document.createElement('label');
         priorityTwoLabel.innerText = '!!';
         priorityTwoLabel.classList.add('priority-label');
-        priorityTwoLabel.setAttribute('for', 'p2');
+        priorityTwoLabel.setAttribute('for', `p${listCount}2`);
         const priorityTwo = document.createElement('input');
-        priorityTwo.id = 'p2';
+        priorityTwo.id = `p${listCount}2`;
         priorityTwo.type = 'radio';
-        priorityTwo.name = 'priority';
+        priorityTwo.name = `priority${listCount}`;
         priorityTwo.value = 'medium';
-        // priorityTwo.hidden = true;
+        priorityTwo.hidden = true;
         priorityContainer.append(priorityTwoLabel);
         priorityContainer.append(priorityTwo);
         
         const priorityThreeLabel = document.createElement('label');
         priorityThreeLabel.innerText = '!!!';
         priorityThreeLabel.classList.add('priority-label');
-        priorityThreeLabel.setAttribute('for', 'p3');
+        priorityThreeLabel.setAttribute('for', `p${listCount}3`);
         const priorityThree = document.createElement('input');
-        priorityThree.id = 'p3';
+        priorityThree.id = `p${listCount}3`;
         priorityThree.type = 'radio';
-        priorityThree.name = 'priority';
+        priorityThree.name = `priority${listCount}`;
         priorityThree.value = 'high';
-        // priorityThree.hidden = true;
+        priorityThree.hidden = true;
         priorityContainer.append(priorityThreeLabel);
         priorityContainer.append(priorityThree);
         newTaskForm.append(priorityContainer);
         
+        listCount++;
+
         const deleteBtn = document.createElement('button');
         deleteBtn.innerText = 'Delete';
         deleteBtn.type = 'button';
@@ -222,6 +225,8 @@ completedList.addEventListener('click', function(e) {
 })
 
 //complete
+const prodPointDisplay = document.querySelector('#tod-prodpoint-num');
+let prodPointsSum = parseInt(prodPointDisplay.innerText);
 compBtn.addEventListener('click', function() {
     completedList.toggleAttribute('hidden');
 })
@@ -229,11 +234,34 @@ compBtn.addEventListener('click', function() {
 list.addEventListener('click', function(e) {
     if (e.target.className.includes('complete-check')) {
         if (e.target.checked === true) {
+            const prioCheck = [e.target.parentNode.childNodes[2].childNodes[1], e.target.parentNode.childNodes[2].childNodes[3], e.target.parentNode.childNodes[2].childNodes[5]];
+            let prodPoints = 0;
+            let anyChecked = false;
+            let isChecked = false;
+            for (let i = 0; i < prioCheck.length; i++){
+                isChecked = prioCheck[i].checked;
+                if (isChecked === true){
+                    console.dir(isChecked);
+                    if (prioCheck[i].getAttribute('value') === 'high'){
+                        prodPoints = 5;
+                    } else if (prioCheck[i].getAttribute('value') === 'medium') {
+                        prodPoints = 3;
+                    } else if (prioCheck[i].getAttribute('value') === 'low') {
+                        prodPoints = 2;
+                    }
+                    anyChecked = true;
+                } 
+            }
+            if(anyChecked === false) {
+                    prodPoints = 1;
+            }
             completedList.prepend(e.target.parentNode.parentNode);
             toDoSum--;
             finSum++;
+            prodPointsSum += prodPoints;
             toDoDisplay.innerText = toDoSum;
             finDisplay.innerText = finSum;
+            prodPointDisplay.innerText = prodPointsSum;
         }
     }
 })
@@ -241,11 +269,34 @@ list.addEventListener('click', function(e) {
 completedList.addEventListener('click', function(e) {
     if (e.target.className.includes('complete-check')) {
         if (e.target.checked === false) {
+            const prioCheck = [e.target.parentNode.childNodes[2].childNodes[1], e.target.parentNode.childNodes[2].childNodes[3], e.target.parentNode.childNodes[2].childNodes[5]];
+            let prodPoints = 0;
+            let anyChecked = false;
+            let isChecked = false;
+            for (let i = 0; i < prioCheck.length; i++){
+                isChecked = prioCheck[i].checked;
+                if (isChecked === true){
+                    console.dir(isChecked);
+                    if (prioCheck[i].getAttribute('value') === 'high'){
+                        prodPoints = 5;
+                    } else if (prioCheck[i].getAttribute('value') === 'medium') {
+                        prodPoints = 3;
+                    } else if (prioCheck[i].getAttribute('value') === 'low') {
+                        prodPoints = 2;
+                    }
+                    anyChecked = true;
+                } 
+            }
+            if(anyChecked === false) {
+                    prodPoints = 1;
+            }
             list.prepend(e.target.parentNode.parentNode);
             toDoSum++;
             finSum--;
+            prodPointsSum -= prodPoints;
             toDoDisplay.innerText = toDoSum;
             finDisplay.innerText = finSum;
+            prodPointDisplay.innerText = prodPointsSum;
         }
     }
 })
@@ -253,7 +304,16 @@ completedList.addEventListener('click', function(e) {
 //priority
 list.addEventListener('click', function(e) {
     if (e.target.className.includes('priority-label')) {
-        
+        console.dir(e.target.parentNode);
+        checkedLabelCheck = e.target.parentNode.childNodes;
+        console.dir(checkedLabelCheck);
+        for (let node of checkedLabelCheck) {
+            node.classList.remove('checked-priority');
+        }
+        e.target.classList.add('checked-priority');
+        const labelFor = e.target.getAttribute('for');
+        const checkedRadio = document.querySelector(`#${labelFor}`);
+        checkedRadio.checked = true;
     }
 })
 
