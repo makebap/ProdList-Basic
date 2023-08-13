@@ -64,9 +64,10 @@
                             <div class="col-5">
                                 <select name="filter" id="filter">
                                     <option value="filter">Filter</option>
-                                    <option value="unfinished">Completed</option>
+                                    <option value="completed">Completed</option>
                                     <option value="a-z">A-Z</option>
                                     <option value="z-a">Z-A</option>
+                                    <option value="priority">Priority</option>
                                     <option value="recent">Most Recent</option>
                                     <option value="oldest">Oldest</option>
                                 </select>
@@ -75,14 +76,14 @@
                     </div>
                     <div class="today-breakdown container">
                         <div class="row">
-                            <div class="col tod-num"><span id="fin-num">0</span></div>
-                            <div class="col tod-num"><span id="unfin-num">0</span></div>
-                            <div class="col tod-num"><span id="tod-prodpoint-num">0</span></div>
+                            <div class="col-4 tod-num"><span id="fin-num">0</span></div>
+                            <div class="col-4 tod-num"><span id="unfin-num">0</span></div>
+                            <div class="col-4 tod-num"><span id="tod-prodpoint-num">0</span></div>
                         </div>
                         <div class="row">
-                            <div class="col tod-label">Finished Tasks</div>
-                            <div class="col tod-label">Unfinished Tasks</div>
-                            <div class="col tod-label">ProdPoints Today <sup><img class="info-icon" src="/images/info.png" alt=""></sup></div>
+                            <div class="col-4 tod-label">Finished Tasks</div>
+                            <div class="col-4 tod-label">Unfinished Tasks</div>
+                            <div class="col-4 tod-label">ProdPoints Today <sup><img class="info-icon" src="/images/info.png" alt=""></sup></div>
                         </div>
                     </div>
                     <div class="prodPoints-desc">

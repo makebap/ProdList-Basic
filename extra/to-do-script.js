@@ -105,6 +105,7 @@ addNewForm.addEventListener('submit', function(e) {
         const newTask = newTaskInput.value;
         const newTaskCard = document.createElement('div');
         newTaskCard.classList.add('to-do-item');
+        newTaskCard.id = listCount;
         const newTaskForm = document.createElement('form');
 
         const newTaskComplete = document.createElement('input');
@@ -190,7 +191,8 @@ addNewForm.addEventListener('submit', function(e) {
 
 //editing and deleting item
 //edit
-const completedList = document.querySelector('#completed-items');
+const completedList = document.querySelector('#completed-list');
+const completedItemsList = document.querySelector('#completed-items');
 const compBtn = document.querySelector('#show-completed');
 const finDisplay = document.querySelector('#fin-num');
 let finSum = parseInt(finDisplay.innerText);
@@ -201,7 +203,7 @@ list.addEventListener('submit', function(e) {
     }
 })
 
-completedList.addEventListener('submit', function(e) {
+completedItemsList.addEventListener('submit', function(e) {
     if (e.target.className.includes('taskCardForm')) {
         document.querySelector('#add-to-do').focus();
     }
@@ -216,7 +218,7 @@ list.addEventListener('click', function(e) {
     }
 })
 
-completedList.addEventListener('click', function(e) {
+completedItemsList.addEventListener('click', function(e) {
     if (e.target.className.includes('task-delete')) {
         e.target.parentNode.parentNode.remove();
         finSum--;
@@ -228,7 +230,7 @@ completedList.addEventListener('click', function(e) {
 const prodPointDisplay = document.querySelector('#tod-prodpoint-num');
 let prodPointsSum = parseInt(prodPointDisplay.innerText);
 compBtn.addEventListener('click', function() {
-    completedList.toggleAttribute('hidden');
+    completedItemsList.toggleAttribute('hidden');
 })
 
 list.addEventListener('click', function(e) {
@@ -254,7 +256,7 @@ list.addEventListener('click', function(e) {
             if(anyChecked === false) {
                     prodPoints = 1;
             }
-            completedList.prepend(e.target.parentNode.parentNode);
+            completedItemsList.prepend(e.target.parentNode.parentNode);
             toDoSum--;
             finSum++;
             prodPointsSum += prodPoints;
@@ -265,7 +267,7 @@ list.addEventListener('click', function(e) {
     }
 })
 
-completedList.addEventListener('click', function(e) {
+completedItemsList.addEventListener('click', function(e) {
     if (e.target.className.includes('complete-check')) {
         if (e.target.checked === false) {
             const prioCheck = [e.target.parentNode.childNodes[2].childNodes[1], e.target.parentNode.childNodes[2].childNodes[3], e.target.parentNode.childNodes[2].childNodes[5]];
@@ -286,7 +288,7 @@ completedList.addEventListener('click', function(e) {
                 } 
             }
             if(anyChecked === false) {
-                    prodPoints = 1;
+                prodPoints = 1;
             }
             list.prepend(e.target.parentNode.parentNode);
             toDoSum++;
@@ -359,26 +361,57 @@ search.addEventListener('input', function() {
     }
 })
 
-//filtering
+//filter and sort
+//home-page-view
 const filterSelect = document.querySelector('#filter');
+const taskCards = list.childNodes;
+
+const isOldestSorted = () => {
+    for (let i = 0; i < taskCards.length; i++) {
+        if (taskCards[i].id > taskCards[i+1].id) {
+            return false;
+        }
+    }
+    return true;
+}
 
 filterSelect.addEventListener('change', function() {
     if (filterSelect.value === 'filter') {
         console.log('filter.');
-    } else if (filterSelect.value === 'unfinished') {
-        console.log('unfinished.');
+        homePage.append(completedList);
+        completedItemsList.hidden = true;
+    } else if (filterSelect.value === 'completed') {
+        console.log('completed.');
+        homePage.append(list);
+        completedItemsList.hidden = false;
     } else if (filterSelect.value === 'a-z') {
         console.log('a-z.');
+        homePage.append(completedList);
+        completedItemsList.hidden = true;
     } else if (filterSelect.value === 'z-a') {
         console.log('z-a.');
+        homePage.append(completedList);
+        completedItemsList.hidden = true;
+    } else if (filterSelect.value === 'priority') {
+        console.log('priority.');
+        homePage.append(completedList);
+        completedItemsList.hidden = true;
     } else if (filterSelect.value === 'recent') {
         console.log('recent.');
+        homePage.append(completedList);
+        completedItemsList.hidden = true;
     } else if (filterSelect.value === 'oldest') {
         console.log('oldest.');
+        homePage.append(completedList);
+        completedItemsList.hidden = true;
+        for (let i = 0; i < taskCards.length; i++) {
+            if (taskCards[i].id > taskCards[i+1].id) {
+                list.append(taskCards[i]);
+            }
+        }
     }
 })
 
-//sort
 
 //desc
 //ProdPoints desc expand
@@ -387,7 +420,6 @@ const descCloseBtn = document.querySelector('.close-desc');
 const desc = document.querySelector('.prodPoints-desc');
 desc.style.display = 'none'
 iCard.addEventListener('click', function() {
-    console.dir(desc.style.display);
     if (desc.style.display === 'none'){
         desc.style.display = 'block';
     } else {
@@ -398,3 +430,4 @@ iCard.addEventListener('click', function() {
 descCloseBtn.addEventListener('click', function() {
     desc.style.display = 'none';
 })
+
